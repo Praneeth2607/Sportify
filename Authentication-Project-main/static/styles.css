@@ -1,0 +1,146 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: black;
+  }
+  nav{
+    background: black;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+  }
+  nav ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    position: relative;
+  }
+  nav ul li a::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #3aecef;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+  }
+  nav ul li a:hover::after{
+    width: 100%;
+  }
+  nav .logo{
+    width: 25%;
+    height: 25%;
+  }
+  nav ul li {
+    color: #3aecef;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .container {
+    margin-bottom: 60px;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 700px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    margin: 20px 0 5px;
+  }
+
+  input[type="text"] {
+    width: calc(100% - 60px);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+  }
+
+  .username-container {
+    display: flex;
+    align-items: center;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .chat-box {
+    background: #f2f2f2;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+
+  .bot-message {
+    background: #eee;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  .message-input {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .message-input input[type="text"] {
+    flex: 1;
+  }
+  .footer {
+    margin-top: 60px;
+    background: #0ccdcd;
+    color: black;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer h5 {
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  .footer a {
+    color: black;
+    margin: 0 12px;
+    font-size: 24px;
+    transition: 0.3s;
+  }
+  
+  .footer a:hover {
+    color: #ffd700;
+    transform: scale(1.2);
+  }
+  
+  .footer p {
+    margin: 5px 0;
+  }
+  

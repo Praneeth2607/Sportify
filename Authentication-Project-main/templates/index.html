@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+</head>
+<body style="background-color: black;">
+    <nav>
+        <img class="logo" src="{% static 'logo.jpg' %}">
+        <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="profile">PROFILE</a></li>
+            <li><a href="{% url 'chatbot' %}">AI</a></li>
+            <li><a href="{% url 'match_form' %}" class="filter-button">FILTER</a></li>
+            <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+        </ul>
+    </nav>
+    <div id="profile-container"></div>
+
+<script>
+  const athletes = [
+    {
+      "Name": "Aarav", "Sport": "Shooting", "Age": 26, "Gender": "Male",
+      "City": "Delhi", "State": "Uttarpradesh", "Country": "India", "Level": "Regional"
+    },
+    {
+      "Name": "Diya", "Sport": "Tennis", "Age": 22, "Gender": "Female",
+      "City": "Kolkata", "State": "West Bengal", "Country": "India", "Level": "State"
+    },
+    {
+      "Name": "Aditya", "Sport": "Boxing", "Age": 25, "Gender": "Male",
+      "City": "Chennai", "State": "Tamil Nadu", "Country": "India", "Level": "State"
+    },
+    {
+      "Name": "Myra", "Sport": "Football", "Age": 26, "Gender": "Female",
+      "City": "Delhi", "State": "Uttarpradesh", "Country": "India", "Level": "Regional"
+    },
+    {
+      "Name": "Fahad", "Sport": "Cricket", "Age": 24, "Gender": "Male",
+      "City": "Mumbai", "State": "Maharastra", "Country": "India", "Level": "International"
+    }
+    ];
+
+function generateDescription(athlete) {
+  return `${athlete.Name} is a skilled ${athlete.Sport} player from ${athlete.City}, ${athlete.State}. Competing at the ${athlete.Level} level, they’ve shown dedication and excellence in their game.`;
+}
+
+function getAvatar(gender) {
+  return gender.toLowerCase() === 'female'
+    ? "https://randomuser.me/api/portraits/women/44.jpg"
+    : "https://randomuser.me/api/portraits/men/45.jpg";
+}
+
+const container = document.getElementById("profile-container");
+
+athletes.forEach(athlete => {
+  const reel = document.createElement("div");
+  reel.className = "reel";
+
+  reel.innerHTML = `
+    <div class="profile-card animate_animated animate_fadeInUp">
+      <img src="${getAvatar(athlete.Gender)}" alt="profile" class="profile-img">
+      <h2>${athlete.Name}</h2>
+      <p><strong>Sport:</strong> ${athlete.Sport}</p>
+      <p><strong>Age:</strong> ${athlete.Age}</p>
+      <p><strong>Gender:</strong> ${athlete.Gender}</p>
+        <p><strong>City:</strong> ${athlete.City}</p>
+        <p><strong>State:</strong> ${athlete.State}</p>
+        <p><strong>Country:</strong> ${athlete.Country}</p>
+        <p><strong>Level:</strong> ${athlete.Level}</p>
+        <div class="description">${generateDescription(athlete)}</div>
+      </div>
+    `;
+    container.appendChild(reel);
+  });
+</script>
+<div class="footer">
+    <h5>Contact Us</h5>
+    <p><i class="fas fa-phone"></i> ‪+91 98765 43210‬</p>
+    <p><i class="fas fa-envelope"></i> support@sportify.in</p>
+  
+    <div class="mt-3">
+      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+  
+    <p class="mt-3">© 2025 Sportify. All Rights Reserved.</p>
+  </div>
+     
+    
+    <!-- Just a link to the filter page -->
+    
+    
+</body>
+</html>

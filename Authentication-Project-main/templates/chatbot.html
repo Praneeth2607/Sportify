@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat Assistant</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <nav>
+    <img class="logo" src="{% static 'logo.jpg' %}">
+    <h1>SPORTIFY</h1>
+    <ul>
+        <li><a href="{% url 'index' %}">HOME</a></li>
+        <li><a href="profile">PROFILE</a></li>
+        <li><a href="#">AI</a></li>
+        <li><a href="{% url 'match_form' %}" class="filter-button">FILTER</a></li>
+        <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+    </ul>
+</nav>
+    <div class="container">
+        <h1>AI Assistant</h1>
+        
+        <label for="athlete-username">Athlete Username</label>
+        <div class="username-container">
+            <input type="text" id="athlete-username" placeholder="Enter athlete username" />
+            <button onclick="setUsername()">Set</button>
+        </div>
+
+        <div class="chat-box" id="chat-box">
+            <div class="bot-message">Hello! I'm your AI assistant. Please enter an athlete's username to get started.</div>
+        </div>
+
+        <div class="message-input">
+            <input type="text" id="user-message" placeholder="Type your message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        let currentUsername = '';
+
+        function setUsername() {
+            const input = document.getElementById("athlete-username").value.trim();
+            if (input) {
+                currentUsername = input;
+                appendMessage("bot", `Username set to ${input}. Ask me anything about this athlete.`);
+            } else {
+                alert("Please enter a valid username.");
+            }
+        }
+
+        async function sendMessage() {
+            const messageInput = document.getElementById("user-message");
+            const message = messageInput.value.trim();
+            if (!currentUsername) {
+                alert("Please set an athlete username first.");
+                return;
+            }
+            if (!message) return;
+
+            appendMessage("user", message);
+            messageInput.value = "";
+
+            const botReply = await fetchBotResponse(currentUsername, message);
+            appendMessage("bot", botReply);
+        }
+
+        function appendMessage(sender, text) {
+            const chatBox = document.getElementById("chat-box");
+            const msgDiv = document.createElement("div");
+            msgDiv.className = sender === "user" ? "user-message" : "bot-message";
+            msgDiv.textContent = text;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        async function fetchBotResponse(username, question) {
+            const response = await fetch("/api/ask/", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCSRFToken(),
+                },
+                body: JSON.stringify({ username: username, question: question })
+            });
+
+            const data = await response.json();
+            return data.answer || "Sorry, something went wrong.";
+        }
+
+        function getCSRFToken() {
+            const name = "csrftoken";
+            const cookies = document.cookie.split(';');
+            for (let cookie of cookies) {
+                if (cookie.trim().startsWith(name + '=')) {
+                    return cookie.trim().substring(name.length + 1);
+                }
+            }
+            return '';
+        }
+    </script>
+
+<div class="footer">
+    <h5>Contact Us</h5>
+    <p><i class="fas fa-phone"></i> ‪+91 98765 43210‬</p>
+    <p><i class="fas fa-envelope"></i> support@sportify.in</p>
+  
+    <div class="mt-3">
+      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+  
+    <p class="mt-3">© 2025 Sportify. All Rights Reserved.</p>
+  </div>
+</body>
+</html>

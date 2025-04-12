@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Athlete Profile - Adithya</title>
+  <link rel="stylesheet" href="{% static 'profile.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <img class="profile-pic" src="{% static 'logo2.jpg' %}">
+    <div class="banner">
+      <h1>ADITHYA</h1>
+      <p>adithya.athlete@email.com</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="info">
+      <h2>Adithya</h2>
+      <p>Football Player | International Level Athlete</p>
+      <p><strong>Location:</strong> Chennai, India</p>
+      <p><strong>Connections:</strong> 88 scouts</p>
+      <button onclick="alertContact()">Contact Info</button>
+    </section>
+
+    <section class="open-role">
+      <h3>Open to Opportunities</h3>
+      <p>Football scouting & international leagues</p>
+    </section>
+  </main>
+
+  <div class="footer">
+    <h5>Contact Us</h5>
+    <p><i class="fas fa-phone"></i> ‪+91 98765 43210‬</p>
+    <p><i class="fas fa-envelope"></i> support@sportify.in</p>
+  
+    <div class="mt-3">
+      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+  
+    <p class="mt-3">© 2025 Sportify. All Rights Reserved.</p>
+  </div>
+
+
+
+  <script>
+    function alertContact() {
+  alert("Contact Email: adithya.athlete@email.com");
+}
+  </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f0faff;
+    color: #000;
+  }
+  
+  header {
+    background-color: black; /* Cyan */
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .profile-pic {
+    width: 100px;           /* Updated size */
+    height: 100px;          /* Updated size */
+    border-radius: 50%;
+    border: 3px solid #fff;
+      
+  }
+  
+  .banner h1 {
+    margin: 0;
+    font-size: 28px;
+  }
+  
+  .banner p {
+    margin: 5px 0 0;
+    font-size: 14px;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  .info, .open-role {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  button {
+    background-color: #000;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .footer {
+    background: #0ccdcd;
+    color: black;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer h5 {
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  .footer a {
+    color: black;
+    margin: 0 12px;
+    font-size: 24px;
+    transition: 0.3s;
+  }
+  
+  .footer a:hover {
+    color: #ffd700;
+    transform: scale(1.2);
+  }
+  
+  .footer p {
+    margin: 5px 0;
+  }
+  
